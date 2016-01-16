@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe Mother do
+  context 'associations' do
+    it { is_expected.to have_many :sons }
+  end
+
   describe '#ensure_valid_age?' do
     let(:mother) { build(:mother) }
 
