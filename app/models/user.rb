@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     children.push(daughters)
   end
 
+  def the_same_father
+    father.children.reject { |user| user.id != id }
+  end
+
   protected
 
   def ensure_valid_age
