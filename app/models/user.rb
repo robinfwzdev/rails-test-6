@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  extend Enumerize
+
+  enumerize :gender, in: [:male, :female]
+
   validates :name, presence: true
   validates :dob,  presence: true
   validate  :ensure_valid_age
