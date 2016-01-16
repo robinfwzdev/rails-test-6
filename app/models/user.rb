@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     father.children.reject { |user| user.id != id }
   end
 
+  def father_of?(child)
+    child.father == self ? true : false
+  end
+
   protected
 
   def ensure_valid_age
