@@ -44,8 +44,9 @@ class User < ActiveRecord::Base
     children.push(daughters)
   end
 
-  def the_same_father
-    father.children.reject { |user| user.id != id }
+  def brothers
+    sons =  Child.where(gender: 'male')
+    sons.reject { |son| son.age <= self.age }
   end
 
   def father_of?(child)

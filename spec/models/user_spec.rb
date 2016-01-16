@@ -61,4 +61,16 @@ describe User do
       expect(father.daughters.first).not_to eq son
     end
   end
+
+  describe '#brothers' do
+    let!(:william)  { create(:child, dob: '1993-02-1', gender: 'male') }
+    let!(:ronadal)  { create(:child, dob: '1990-02-1', gender: 'male') }
+    let!(:robin)    { create(:child, dob: '1988-02-1', gender: 'male') }
+    let!(:mirrinda) { create(:child, dob: '1990-02-1', gender: 'female') }
+
+    it 'get all brothers' do
+      expect(ronadal.brothers.first).to eq robin
+      expect(ronadal.brothers.first).not_to eq william
+    end
+  end
 end
