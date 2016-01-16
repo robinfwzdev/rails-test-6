@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :father, parent: :user, class: Father do
-    sequence(:name)   { |n| "Father #{n}"}
+    first_name 'Oscar'
+    last_name  'Brazil'
   end
 end
