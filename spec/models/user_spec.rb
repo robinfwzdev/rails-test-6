@@ -12,6 +12,11 @@ describe User do
     allow(Date).to receive(:today).and_return('15/1/2015'.to_date)
   end
 
+  let!(:father)   { create(:user) }
+  let!(:son)      { create(:child, father_id: father.id, gender: 'male') }
+  let!(:daughter) { create(:child, father_id: father.id, gender: 'female') }
+
+
   describe '#ensure_valid_age?' do
     let(:user) { build(:user) }
 
@@ -44,13 +49,16 @@ describe User do
   end
 
   describe '#sons' do
-    let!(:father)   { create(:user) }
-    let!(:son)      { create(:child, father_id: father.id, gender: 'male') }
-    let!(:daughter) { create(:child, father_id: father.id, gender: 'female') }
-
     it 'get all sons' do
       expect(father.sons.first).to eq son
       expect(father.sons.first).not_to eq daughter
+    end
+  end
+
+  describe '#daughters' do
+    it 'get all daughters' do
+      expect(father.daughters.first).to eq daughter
+      expect(father.daughters.first).not_to eq son
     end
   end
 end

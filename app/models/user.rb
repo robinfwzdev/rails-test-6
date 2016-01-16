@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     Child.where('(father_id = ? or mother_id = ?) and gender = ?', id, id, 'male')
   end
 
+  def daughters
+    Child.where('(father_id = ? or mother_id = ?) and gender = ?', id, id, 'female')
+  end
+
   def parents
     parents = Array.new
     parents.push(self.father) if self.father.present?
