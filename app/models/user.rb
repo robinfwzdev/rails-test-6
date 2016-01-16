@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :last_name,  presence: true
   validate  :ensure_valid_age
 
+
   MIN_AGE = 0
 
   def age
@@ -21,6 +22,12 @@ class User < ActiveRecord::Base
 
   def say_something
     return 'Hello, I am your ' << self.class.name
+  end
+
+  def parents
+    parents = Array.new
+    parents.push(self.father) if self.father.present?
+    parents.push(mother) if mother.present?
   end
 
   protected
