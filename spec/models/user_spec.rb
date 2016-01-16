@@ -42,4 +42,15 @@ describe User do
       expect(user.name).to eq name
     end
   end
+
+  describe '#sons' do
+    let!(:father)   { create(:user) }
+    let!(:son)      { create(:child, father_id: father.id, gender: 'male') }
+    let!(:daughter) { create(:child, father_id: father.id, gender: 'female') }
+
+    it 'get all sons' do
+      expect(father.sons.first).to eq son
+      expect(father.sons.first).not_to eq daughter
+    end
+  end
 end

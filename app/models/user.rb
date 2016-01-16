@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     return 'Hello, I am your ' << self.class.name
   end
 
+  def sons
+    Child.where('father_id = ? and gender = ?', id, 'male')
+  end
+
   def parents
     parents = Array.new
     parents.push(self.father) if self.father.present?
