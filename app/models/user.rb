@@ -44,6 +44,11 @@ class User < ActiveRecord::Base
     child.father == self ? true : false
   end
 
+  def older_than(another_member)
+    return nil if another_member.age > self.age
+    self.age - another_member.age
+  end
+
   protected
 
   def ensure_valid_age
