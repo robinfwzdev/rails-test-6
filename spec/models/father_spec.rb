@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Father do
   context 'associations' do
     it { is_expected.to have_many :sons }
+    it { is_expected.to have_many :daughters }
   end
 
   describe '#ensure_valid_age?' do
