@@ -30,6 +30,12 @@ class User < ActiveRecord::Base
     parents.push(mother) if mother.present?
   end
 
+  def children
+    children = Array.new
+    children.push(sons)
+    children.push(daughters)
+  end
+
   protected
 
   def ensure_valid_age
