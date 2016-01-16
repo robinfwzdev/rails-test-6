@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def sons
-    Child.where('father_id = ? and gender = ?', id, 'male')
+    Child.where('(father_id = ? or mother_id = ?) and gender = ?', id, id, 'male')
   end
 
   def parents
