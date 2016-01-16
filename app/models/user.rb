@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
     ((Date.today - dob) / 365).floor
   end
 
+  def name
+    first_name + ' ' + last_name
+  end
+
+  def say_something
+    return 'Hello, I am your ' << self.class.name
+  end
+
   protected
 
   def ensure_valid_age

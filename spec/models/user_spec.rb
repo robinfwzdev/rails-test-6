@@ -33,4 +33,13 @@ describe User do
       end
     end
   end
+
+  describe '#name' do
+    let!(:user) { create(:user) }
+    let(:name)  { user.first_name + " " + user.last_name }
+
+    it 'merge first_name and last_name' do
+      expect(user.name).to eq name
+    end
+  end
 end
